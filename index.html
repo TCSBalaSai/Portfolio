@@ -1,0 +1,2338 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no"
+    />
+    <!--fontawesome icons-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- HOSTED -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,600italic,300italic,400italic,300,700italic,800italic,800"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="fonts/mdi/css/materialdesignicons.min.css"
+      media="all"
+      rel="stylesheet"
+    />
+
+    <!-- LOCAL -->
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/ >
+
+    <!-- HOSTED -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/2.1.11/jquery.mixitup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.0/jquery.waypoints.min.js"></script>
+
+    <!-- LOCAL -->
+    <script src="scripts/pt.min.js"></script>
+    <script src="scripts/index.js"></script>
+    <script src="scripts/modal.js"></script>
+	
+	<style>
+	
+	@font-face {
+  font-family: "Raleway";
+  src: url("../fonts/Raleway-Regular.ttf");
+}
+@font-face {
+  font-family: "Raleway-semibold";
+  src: url("../fonts/Raleway-SemiBold.ttf");
+}
+@font-face {
+  font-family: "Raleway-bold";
+  src: url("../fonts/Raleway-Bold.ttf");
+}
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes flipInX {
+  from {
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0;
+    -webkit-transform: perspective(400px) rotateY(90deg);
+    transform: perspective(400px) rotateY(90deg);
+  }
+  40% {
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    -webkit-transform: perspective(400px) rotateY(-20deg);
+    transform: perspective(400px) rotateY(-20deg);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: perspective(400px) rotateY(10deg);
+    transform: perspective(400px) rotateY(10deg);
+  }
+  80% {
+    -webkit-transform: perspective(400px) rotateY(-5deg);
+    transform: perspective(400px) rotateY(5deg);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px);
+  }
+}
+@keyframes popDown {
+  0% {
+    transform: translateY(-100px);
+  }
+}
+@keyframes slideUp {
+  0% {
+    transform: translateY(300px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideDown {
+  0% {
+    transform: translateY(-300px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-300px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(300px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes toBottomFromTop {
+  49% {
+    transform: translateY(100%);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  51% {
+    opacity: 1;
+  }
+}
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  80% {
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body {
+  color: #fff;
+  font-family: "Raleway";
+  font-size: 8pt;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0px;
+  overflow-x: hidden;
+  text-align: center;
+}
+
+.error {
+  color: red;
+}
+
+
+
+.me {
+  clip-path: polygon(25% 0, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+  background: url("../img/me.jpg");
+  height: 250px;
+  width: 280px;
+  background-size: contain;
+}
+
+#preload {
+  display: none;
+}
+
+.page-link {
+  cursor: pointer;
+}
+
+.disable-hover {
+  pointer-events: none;
+}
+
+.overflow-wrap {
+  overflow-x: hidden;
+}
+
+.canvas {
+  background: url("https://w0.peakpx.com/wallpaper/420/169/HD-wallpaper-bertrandt-software-experts-data-science-services.jpg") center center/cover;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+}
+
+.button {
+  border: 2px solid #fff;
+  box-sizing: inherit;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 13pt;
+  padding: 10px 20px;
+  transition: all 0.5s;
+}
+.button:hover {
+  background-color: #04c2c9;
+  border-color: #04c2c9;
+}
+.button .mdi {
+  vertical-align: middle;
+}
+
+.bold {
+  font-family: "Raleway-bold";
+}
+
+.flex {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.flex.row {
+  flex-direction: row;
+}
+.flex.wrap {
+  flex-wrap: wrap;
+}
+
+.hex-wrap {
+  display: inline-block;
+  height: 80px;
+  position: relative;
+  text-align: center;
+  width: 80px;
+}
+
+.hexagon {
+  background-color: #04c2c9;
+  display: inline-block;
+  height: 100%;
+  width: 57.735%;
+}
+
+.hexagon:before {
+  background-color: inherit;
+  content: "";
+  height: inherit;
+  position: absolute;
+  right: 21.1325%;
+  top: 0;
+  transform: rotateZ(60deg);
+  width: inherit;
+}
+
+.hexagon:after {
+  background-color: inherit;
+  content: "";
+  height: inherit;
+  position: absolute;
+  right: 21.1325%;
+  top: 0;
+  transform: rotateZ(-60deg);
+  width: inherit;
+}
+
+.highlight {
+  color: #e31b6d;
+}
+
+.header {
+  color: #444649;
+  font-family: "raleway-bold";
+  font-size: 25pt;
+  position: relative;
+  position: relative;
+}
+
+.header-bar {
+  background: #444649;
+  height: 4px;
+  margin: 25px 0 75px 0;
+  width: 70px;
+}
+
+.label {
+  font-size: 14pt;
+  font-weight: 500;
+}
+
+.resume {
+  background: #455261;
+  height: 100px;
+}
+
+nav {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  background: #1b242f;
+  border-bottom: 3px solid #04c2c9;
+  height: 50px;
+  text-align: left;
+  width: 100%;
+  z-index: 99;
+}
+nav.fixed {
+  bottom: inherit;
+  left: 0;
+  position: fixed;
+  top: 0;
+}
+nav.fixed.desk {
+  animation: popDown 0.5s;
+}
+nav .link-wrap {
+  background: #333;
+  height: 0;
+  max-width: 1200px;
+  overflow: hidden;
+  position: absolute;
+  top: 53px;
+  transition: height 0.3s ease-out;
+  width: 100%;
+}
+nav .link-wrap.visible {
+  height: 220px;
+}
+nav .link-wrap div {
+  cursor: pointer;
+  font-size: 12pt;
+  padding: 12px 20px;
+  text-transform: uppercase;
+  transition: color 0.5s;
+}
+nav .link-wrap div:first-child {
+  padding: 25px 20px 12px 20px;
+}
+nav .link-wrap div:hover {
+  color: #e31b6d;
+}
+nav .mdi-menu {
+  font-size: 30pt;
+  line-height: 36pt;
+  margin: auto 0;
+  position: absolute;
+  right: 5vw;
+  top: 0;
+}
+nav .active {
+  color: #e31b6d;
+}
+
+.carousel-wrap {
+  height: 250px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.window {
+  background: #222;
+  overflow: hidden;
+  position: relative;
+}
+
+#carousel {
+  position: relative;
+  top: 0;
+  width: 10000px;
+}
+
+.slide {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  float: left;
+  height: 250px;
+  justify-content: center;
+}
+
+.mdi-chevron-left,
+.mdi-chevron-right {
+  background: rgba(0, 0, 0, 0.3);
+  bottom: 0;
+  color: #fff;
+  cursor: pointer;
+  cursor: pointer;
+  font-size: 14pt !important;
+  font-weight: bold;
+  padding: 10px 15px;
+  position: absolute;
+}
+
+.mdi-chevron-left {
+  left: 0;
+}
+
+.mdi-chevron-right {
+  right: 0;
+}
+
+.transition {
+  transition: 0.7s;
+}
+
+.modal-wrap {
+  height: 100vh;
+  pointer-events: none;
+  position: fixed;
+  width: 100vw;
+  z-index: 100;
+}
+.modal-wrap .mask {
+  background: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  transition: opacity 0.3s;
+  width: 100%;
+}
+.modal-wrap .modal {
+  align-items: flex-start;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+  color: #333;
+  height: 100vh;
+  opacity: 0;
+  position: relative;
+  text-align: left;
+  transform: scale(0.8);
+  transition: all 0.3s;
+}
+.modal-wrap .close {
+  bottom: 25px;
+  color: #bbb;
+  cursor: pointer;
+  font-size: 20pt;
+  font-weight: 800;
+  position: absolute;
+  right: 10px;
+}
+.modal-wrap .info-box {
+  border-top: 3px solid #1b242f;
+  box-sizing: border-box;
+  color: #444;
+  padding: 15px 10px 85px 10px;
+}
+.modal-wrap .title {
+  font-family: "Raleway-bold";
+  font-size: 16pt;
+  line-height: 20pt;
+}
+.modal-wrap .tag {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  color: #c0c0c0;
+  display: block;
+  font-family: "Raleway-bold";
+  font-size: 8pt;
+  font-weight: 300;
+  padding-bottom: 15px;
+}
+.modal-wrap .detail {
+  font-size: 9pt;
+  line-height: 14pt;
+  margin-top: 13px;
+}
+.modal-wrap .mdi-open-in-new {
+  font-size: 11pt;
+  left: -10px;
+  position: relative;
+}
+.modal-wrap .button {
+  background: #e31b6d;
+  border: 0;
+  bottom: 20px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 10pt;
+  font-weight: 600;
+  left: 10px;
+  padding: 11px 30px;
+  pointer-events: none;
+  position: absolute;
+  transition: all 0.5s;
+  visibility: hidden;
+}
+.modal-wrap .button.visible {
+  pointer-events: initial;
+  visibility: visible;
+}
+.modal-wrap .button:hover {
+  background: #fff;
+  color: #e31b6d;
+}
+.modal-wrap .carousel {
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.25);
+}
+.modal-wrap.visible {
+  pointer-events: initial;
+}
+.modal-wrap.visible .modal {
+  opacity: 1;
+  transform: scale(1);
+}
+.modal-wrap.visible .mask {
+  opacity: 1;
+}
+
+section {
+  color: #616161;
+  line-height: 11pt;
+  padding: 70px 0 70px 0;
+  position: relative;
+}
+section .container {
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 10px;
+  width: 100%;
+}
+section:nth-of-type(1) {
+  color: #fff;
+  height: calc(100vh + 53px);
+  padding: 0 10px;
+}
+section:nth-of-type(1) .highlight {
+  font-family: "Raleway-semibold";
+}
+section:nth-of-type(1) .text {
+  font-size: 16pt;
+  line-height: 20pt;
+  margin: 0 0 20px 0;
+  pointer-events: none;
+  z-index: 1;
+}
+section:nth-of-type(1) .hexagon {
+  transition: transform 0.9s ease-in-out;
+}
+section:nth-of-type(1) .hexagon:hover {
+  transform: rotate(540deg);
+}
+section:nth-of-type(1) .button {
+  margin-bottom: 53px;
+  padding: 12px 40px 12px 15px;
+  position: relative;
+}
+section:nth-of-type(1) .button .mdi {
+  position: absolute;
+  right: 15px;
+  top: 11px;
+  transition: transform 0.3s;
+}
+section:nth-of-type(1) .button:hover .mdi {
+  transform: rotate(90deg);
+}
+section:nth-of-type(2) .label-wrap .label {
+  margin: 20px 0 10px 0;
+}
+section:nth-of-type(2) .bullet-wrap {
+  height: 200px;
+  justify-content: flex-start;
+  padding: 0 7px;
+}
+section:nth-of-type(2) .highlight {
+  color: #009ada;
+}
+section:nth-of-type(2) .up-arrow {
+  height: 30px;
+  margin: 15px 0;
+}
+section:nth-of-type(2) .skills-wrapper {
+  align-items: flex-start;
+  width: 100%;
+}
+section:nth-of-type(2) .skills-wrapper .me {
+  height: 200px;
+}
+section:nth-of-type(2) .skills-wrapper .label {
+  margin: 20px 0 15px 0;
+}
+section:nth-of-type(2) .hexagon i {
+  color: #fff;
+  font-size: 34pt;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 20px;
+  z-index: 1;
+}
+section:nth-of-type(2) .bars-wrap {
+  margin: 50px auto 0 auto;
+  max-width: 90%;
+  width: calc(100% - 15px);
+}
+section:nth-of-type(2) .bars-wrap:not(.animated) .fill {
+  width: 0 !important;
+}
+section:nth-of-type(2) .bar {
+  align-items: flex-end;
+  background-color: #eee;
+  color: #666;
+  font-size: 7pt;
+  height: 22px;
+  margin: 0 0 12px 0;
+  position: relative;
+}
+section:nth-of-type(2) .bar:nth-child(1) .fill {
+  transition: 1.1s 0.2s width ease-in-out;
+}
+section:nth-of-type(2) .bar:nth-child(2) .fill {
+  transition: 1.2s 0.2s width ease-in-out;
+}
+section:nth-of-type(2) .bar:nth-child(3) .fill {
+  transition: 1.3s 0.2s width ease-in-out;
+}
+section:nth-of-type(2) .bar:nth-child(4) .fill {
+  transition: 1.4s 0.2s width ease-in-out;
+}
+section:nth-of-type(2) .bar:nth-child(5) .fill {
+  transition: 1.5s 0.2s width ease-in-out;
+}
+section:nth-of-type(2) .bar:nth-child(6) .fill {
+  transition: 1.6s 0.2s width ease-in-out;
+}
+section:nth-of-type(2) .bar:nth-child(7) .fill {
+  transition: 1.7s 0.2s width ease-in-out;
+}
+section:nth-of-type(2) .bar:nth-child(8) .fill {
+  transition: 1.8s 0.2s width ease-in-out;
+}
+section:nth-of-type(2) .bar:nth-child(9) .fill {
+  transition: 1.9s 0.2s width ease-in-out;
+}
+section:nth-of-type(2) .bar:nth-child(10) .fill {
+  transition: 2s 0.2s width ease-in-out;
+}
+section:nth-of-type(2) .bar span {
+  display: none;
+}
+section:nth-of-type(2) .bar.fill {
+  left: 0;
+  position: absolute;
+  top: 0;
+  background-color: #00a1a7;
+  opacity: 1;
+  padding: 0;
+}
+section:nth-of-type(2) .bar .tag {
+  left: 0;
+  position: absolute;
+  top: 0;
+  background-color: #04c2c9;
+  color: #fff;
+  height: 100%;
+  width: 110px;
+  width: 70px;
+}
+section:nth-of-type(2) .bar.secondary {
+  background-color: #c51675;
+}
+section:nth-of-type(2) .bar.secondary .tag {
+  background-color: #e31b6d;
+}
+section:nth-of-type(2) .bar span {
+  padding: 0 15px 0 0;
+  z-index: 1;
+}
+section:nth-of-type(3) {
+  background: #f5f5f5;
+}
+section:nth-of-type(3) .container {
+  padding: 0;
+}
+section:nth-of-type(3) .filter-wrap {
+  position: relative;
+  white-space: nowrap;
+}
+section:nth-of-type(3) .filter {
+  cursor: pointer;
+  font-size: 6pt;
+  font-weight: 600;
+  padding: 0 20px;
+  transition: background-color 0.5s;
+}
+section:nth-of-type(3) .float-bar {
+  bottom: 0;
+  left: 30px;
+  position: absolute;
+  top: 0;
+  background: #e31b6d;
+  border-radius: 1px;
+  height: 25px;
+  margin: auto 0;
+  overflow: hidden;
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+}
+section:nth-of-type(3) .float-bar .row {
+  bottom: 0;
+  left: -30px;
+  position: absolute;
+  top: 0;
+  margin: auto 0;
+  transition: left 0.5s ease-in-out;
+}
+section:nth-of-type(3) .float-bar .row .filter {
+  color: #fff;
+}
+section:nth-of-type(3) .text {
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+section:nth-of-type(3) #gallery {
+  margin: 20px 0;
+}
+section:nth-of-type(3) #gallery .text,
+section:nth-of-type(3) #gallery .button {
+  color: #1b242f;
+  opacity: 0;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  z-index: 2;
+}
+section:nth-of-type(3) #gallery .text .bold,
+section:nth-of-type(3) #gallery .button .bold {
+  font-size: 16pt;
+}
+section:nth-of-type(3) #gallery .button {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  border: 2px solid #e31b6d;
+  font-size: 13pt;
+  margin: 0 auto;
+  padding: 7px 0;
+  width: 170px;
+}
+section:nth-of-type(3) #gallery .mix {
+  display: none;
+  position: relative;
+}
+section:nth-of-type(3) #gallery .mix .waypoint {
+  background: #fff;
+}
+section:nth-of-type(3) #gallery .mix .button:hover {
+  background: #e31b6d;
+  color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+section:nth-of-type(3) #gallery .mix:nth-child(1) .card {
+  background: url("https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630") center center/cover;
+}
+section:nth-of-type(3) #gallery .mix:nth-child(2) .card {
+  background: url("https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630") center center/cover;
+}
+section:nth-of-type(3) #gallery .mix:nth-child(3) .card {
+  background: url("https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630") center center/cover;
+}
+section:nth-of-type(3) #gallery .mix:nth-child(4) .card {
+  background: url("https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630") center center/cover;
+}
+section:nth-of-type(3) #gallery .mix:nth-child(5) .card {
+  background: url("https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630") center center/cover;
+}
+section:nth-of-type(3) #gallery .mix:nth-child(6) .card {
+  background: url("https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630") center center/cover;
+}
+section:nth-of-type(3) #gallery .mix:nth-child(7) .card {
+  background: url("https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630") center center/cover;
+}
+section:nth-of-type(3) #gallery .mix:nth-child(8) .card {
+  background: url("https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630") center center/cover;
+}
+section:nth-of-type(3) #gallery .mix:nth-child(9) .card {
+  background: url("https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630") center center/cover;
+}
+section:nth-of-type(3) #gallery .mix:nth-child(10) .card {
+  background: url("https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630") center center/cover;
+}
+section:nth-of-type(3) #gallery .mix:nth-child(11) .card {
+  background: url("https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630") center center/cover;
+}
+section:nth-of-type(3) #gallery .mix:nth-child(12) .card {
+  background: url("https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630") center center/cover;
+}
+section:nth-of-type(3) #gallery .mix .card {
+  height: 240px;
+  max-width: 100%;
+  transition: opacity 0.5s;
+  width: calc(50vw - 8px);
+}
+section:nth-of-type(3) #gallery .mix:hover .card {
+  opacity: 0;
+}
+section:nth-of-type(3) #gallery .mix:hover .text {
+  cursor: default;
+  opacity: 1;
+  top: 24%;
+}
+section:nth-of-type(3) #gallery .mix:hover .button {
+  bottom: 24%;
+  opacity: 1;
+}
+section .flex-50-gt-sm {
+  display: block;
+}
+section:nth-of-type(4) {
+  padding: 130px 0 100px 0;
+  text-align: left;
+}
+section:nth-of-type(4) .flex.row-gt-sm,
+section:nth-of-type(4) .flex.wrap {
+  align-items: flex-start;
+}
+section:nth-of-type(4) .gradient {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+section:nth-of-type(4) .blog-wrap {
+  cursor: pointer;
+  margin: 0 0 50px 0;
+  padding: 0 2px;
+  width: 100%;
+}
+section:nth-of-type(4) .blog-wrap #thumb-1 {
+  background: url("https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630") center center/cover;
+}
+section:nth-of-type(4) .blog-wrap #thumb-2 {
+  background: url("https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630") center center/cover;
+}
+section:nth-of-type(4) .blog-wrap #thumb-3 {
+  background: url("https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630") center center/cover;
+}
+section:nth-of-type(4) .blog-wrap #thumb-4 {
+  background: url("https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630") center center/cover;
+}
+section:nth-of-type(4) .blog-wrap .fade-wrap {
+  transition: opacity 0.3s;
+}
+section:nth-of-type(4) .blog-wrap.fade .fade-wrap {
+  opacity: 0.4;
+}
+section:nth-of-type(4) .blog-wrap.hover .fade-wrap .label {
+  color: #04c2c9;
+}
+section:nth-of-type(4) .label {
+  font-size: 12pt;
+  line-height: 14pt;
+  transition: color 0.3s ease-in-out;
+}
+section:nth-of-type(4) .thumb {
+  height: 150px;
+  margin: 0 0 15px 0;
+}
+section:nth-of-type(4) .date {
+  font-family: "Open sans";
+  font-size: 7pt;
+  margin: 5px 0 0 0;
+}
+section:nth-of-type(4) .bar {
+  background: #04c2c9;
+  height: 3px;
+  margin: 10px 0px;
+  width: 25%;
+}
+section:nth-of-type(4) .text {
+  font-size: 9pt;
+  line-height: 13pt;
+  max-height: 85px;
+}
+section:nth-of-type(5) {
+  background: #252934;
+  color: #fff;
+  padding-top: 175px;
+}
+section:nth-of-type(5) .header {
+  color: #fff;
+}
+section:nth-of-type(5) .header-bar {
+  background: #fff;
+  margin: 25px 0 40px 0;
+  width: 110px;
+}
+section:nth-of-type(5) .highlight {
+  color: #04c2c9;
+  font-weight: 600;
+}
+section:nth-of-type(5) svg {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+section:nth-of-type(5) form {
+  margin: 40px auto 0 auto;
+  min-width: 95%;
+}
+section:nth-of-type(5) input[type=text],
+section:nth-of-type(5) input[type=email],
+section:nth-of-type(5) textarea {
+  background: #1e242c;
+  border: 0;
+  box-sizing: border-box;
+  color: #fff;
+  display: block;
+  font-size: 12pt;
+  margin-bottom: 3px;
+  outline: none;
+  padding: 10px 15px;
+  width: 100%;
+}
+section:nth-of-type(5) textarea {
+  margin-bottom: 5px;
+  min-height: 150px;
+}
+section:nth-of-type(5) .button {
+  background: transparent;
+  color: #fff;
+  float: right;
+  font-size: 12pt;
+  margin: 5px 0 0 0;
+  outline: 0;
+  padding: 10px 30px;
+}
+section:nth-of-type(5) .button:hover {
+  background: #04c2c9;
+}
+section:nth-of-type(5) #success {
+  height: 0;
+  overflow: hidden;
+  position: relative;
+  transition: height 0.25s;
+  width: 100%;
+}
+section:nth-of-type(5) #success.expand {
+  height: 36px;
+}
+section:nth-of-type(5) #success div {
+  background: #04c986;
+  border: 1px solid #157c59;
+  color: #157051;
+  font-size: 10pt;
+  font-weight: 600;
+  padding: 5px 0;
+}
+section:nth-of-type(5) #close {
+  cursor: pointer;
+  font-size: 12pt;
+  font-weight: 600;
+  padding: 5px 15px;
+  position: absolute;
+  right: 0;
+}
+
+footer {
+  background: #1b242f;
+  padding: 70px 0 50px 0;
+  position: relative;
+}
+footer .mdi-chevron-double-up {
+  background: #e31b6d;
+  cursor: pointer;
+  font-size: 30pt;
+  height: 50px;
+  left: 0;
+  line-height: 40pt;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  top: -25px;
+  transition: background 0.5s;
+  width: 47px;
+}
+footer .mdi-chevron-double-up:hover {
+  background: #fb1f79;
+}
+footer .icon-wrap .icon {
+  background: #262f38;
+  cursor: pointer;
+  font-size: 18pt;
+  height: 55px;
+  margin: 0 15px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
+  width: 55px;
+}
+footer .icon-wrap .mdi {
+  color: #fff;
+  text-align: center;
+}
+footer .icon-wrap .mdi.mdi-codepen {
+  font-size: 20pt;
+}
+footer .icon-wrap .icon:hover {
+  background: #04c2c9;
+  box-shadow: 0 0 0 3px rgba(4, 94, 201, 0.1);
+  transform: scale(0.9);
+}
+footer .icon-wrap .icon:hover .mdi {
+  color: #fff;
+}
+footer .icon-wrap .icon:hover .mdi {
+  -webkit-animation: toBottomFromTop 0.3s forwards;
+  -moz-animation: toBottomFromTop 0.3s forwards;
+  animation: toBottomFromTop 0.3s forwards;
+}
+footer .footnote {
+  color: #8f9aa7;
+  font-size: 10pt;
+  margin-top: 35px;
+  opacity: 0.6;
+}
+footer .footnote .highlight {
+  color: #e31b6d;
+  font-family: "Open Sans";
+}
+
+@media screen and (max-width: 400px) {
+  section:nth-of-type(3) #gallery .mix .card {
+    width: 100vw;
+  }
+}
+@media screen and (min-width: 600px) {
+  body {
+    font-size: 12pt;
+  }
+  .container {
+    padding: 0 20px;
+  }
+  .header {
+    font-size: 30pt;
+  }
+  .header-bar {
+    margin: 25px 0 100px 0;
+  }
+  .label {
+    font-size: 18pt;
+  }
+  .hex-wrap {
+    height: 100px;
+    width: 100px;
+  }
+  .slide,
+  .carousel-wrap {
+    height: 450px;
+  }
+  .mdi-chevron-left,
+  .mdi-chevron-right {
+    font-size: 25pt !important;
+  }
+  .modal-wrap .modal {
+    height: initial;
+    top: -6vh;
+  }
+  .modal-wrap .info-box {
+    padding: 35px 60px 90px 25px;
+  }
+  .modal-wrap .title {
+    font-size: 22pt;
+    line-height: 30pt;
+  }
+  .modal-wrap .tag {
+    font-size: 11pt;
+  }
+  .modal-wrap .detail {
+    font-size: 11pt;
+    line-height: 18pt;
+    margin-top: 15px;
+  }
+  .modal-wrap .close {
+    right: 25px;
+  }
+  .modal-wrap .button {
+    left: 25px;
+  }
+  nav .link-wrap {
+    background: none;
+    height: initial;
+    overflow: visible;
+    position: initial;
+    text-align: left;
+  }
+  nav .link-wrap .visible {
+    height: initial;
+  }
+  nav .link-wrap div {
+    display: inline;
+    font-size: initial;
+    margin: 0 20px;
+    padding: initial;
+  }
+  nav .link-wrap div:first-child {
+    padding: 0;
+  }
+  nav .mdi-menu {
+    display: none;
+  }
+  section {
+    line-height: 18pt;
+    padding: 100px 0 130px 0;
+  }
+  section .container {
+    padding: 0 10px;
+  }
+  section:nth-of-type(1) .text {
+    font-size: 32pt;
+    line-height: 36pt;
+  }
+  section:nth-of-type(1) .button {
+    padding: 12px 50px 12px 20px;
+  }
+  section:nth-of-type(1) .button .mdi {
+    top: 16px;
+  }
+  section:nth-of-type(2) .label-wrap .label {
+    margin: 15px 0 5px 0;
+  }
+  section:nth-of-type(2) .label-wrap > div {
+    padding: 0 15px;
+  }
+  section:nth-of-type(2) .bullet-wrap {
+    height: 230px;
+  }
+  section:nth-of-type(2) .skills-wrapper > .flex:first-child {
+    padding: 0 50px 0 50px;
+  }
+  section:nth-of-type(2) .skills-wrapper .me {
+    height: 250px;
+  }
+  section:nth-of-type(2) .bar {
+    font-size: 11pt;
+    height: 28px;
+    margin: 0 0 15px 0;
+  }
+  section:nth-of-type(2) .bar span {
+    display: initial;
+  }
+  section:nth-of-type(2) .bar .tag {
+    width: 110px;
+  }
+  section:nth-of-type(2) .hexagon i {
+    font-size: 40pt;
+  }
+  section:nth-of-type(3) .filter {
+    font-size: 11pt;
+    margin: 0 15px;
+    padding: 0 30px;
+  }
+  section:nth-of-type(3) .float-bar {
+    height: 30px;
+  }
+  section:nth-of-type(3) #gallery .mix .card {
+    height: 300px;
+  }
+  section:nth-of-type(4) {
+    padding: 130px 0 180px 0;
+  }
+  section:nth-of-type(4) .label {
+    font-size: 16pt;
+    line-height: 22pt;
+  }
+  section:nth-of-type(4) .date {
+    font-size: 8.5pt;
+  }
+  section:nth-of-type(4) .bar {
+    margin: 15px 0px;
+  }
+  section:nth-of-type(4) .text {
+    font-size: 11pt;
+    line-height: 15pt;
+  }
+  section:nth-of-type(4) .blog-wrap {
+    width: 400px;
+  }
+  section:nth-of-type(4) .thumb {
+    height: 200px;
+  }
+  section:nth-of-type(5) form {
+    min-width: 500px;
+  }
+}
+@media screen and (min-width: 960px) {
+  .waypoint {
+    opacity: 0;
+  }
+  .animated.waypoint#gallery {
+    opacity: 1;
+  }
+  .animated.waypoint#gallery .mix:nth-child(1) > div {
+    animation: slideUp 0.75s 0.1s ease both;
+    opacity: 0;
+  }
+  .animated.waypoint#gallery .mix:nth-child(2) > div {
+    animation: slideUp 0.75s 0.2s ease both;
+    opacity: 0;
+  }
+  .animated.waypoint#gallery .mix:nth-child(3) > div {
+    animation: slideUp 0.75s 0.3s ease both;
+    opacity: 0;
+  }
+  .animated.waypoint#gallery .mix:nth-child(4) > div {
+    animation: slideUp 0.75s 0.4s ease both;
+    opacity: 0;
+  }
+  .animated.waypoint#gallery .mix:nth-child(5) > div {
+    animation: slideUp 0.75s 0.5s ease both;
+    opacity: 0;
+  }
+  .animated.waypoint#gallery .mix:nth-child(6) > div {
+    animation: slideUp 0.75s 0.6s ease both;
+    opacity: 0;
+  }
+  .animated.waypoint#gallery .mix:nth-child(7) > div {
+    animation: slideUp 0.75s 0.7s ease both;
+    opacity: 0;
+  }
+  .animated.waypoint#gallery .mix:nth-child(8) > div {
+    animation: slideUp 0.75s 0.8s ease both;
+    opacity: 0;
+  }
+  .animated.waypoint#gallery .mix:nth-child(9) > div {
+    animation: slideUp 0.75s 0.9s ease both;
+    opacity: 0;
+  }
+  .animated.slide-up {
+    animation: slideUp 0.75s ease both;
+  }
+  .animated.slide-down {
+    animation: slideDown 0.75s ease both;
+  }
+  .animated.slide-in-left {
+    animation: slideInLeft 0.75s ease both;
+  }
+  .animated.slide-in-right {
+    animation: slideInRight 0.75s ease both;
+  }
+  .animated.flip-in-x {
+    animation: flipInX 0.75s ease both;
+  }
+  .animated.fade-in {
+    animation: fadeIn 0.75s ease both;
+  }
+  .animated.pop-in {
+    animation: popIn 1s both;
+  }
+  .canvas {
+    background: #252934;
+  }
+  .button {
+    font-size: 16pt;
+  }
+  .flex.row-gt-sm {
+    flex-direction: row;
+  }
+  .flex-50-gt-sm {
+    box-sizing: border-box;
+    -webkit-flex: 1 1 50%;
+    -ms-flex: 1 1 50%;
+    flex: 1 1 50%;
+    max-height: 100%;
+    max-width: 50%;
+  }
+  section:nth-of-type(2) .bars-wrap {
+    margin: 0 0 0 0;
+  }
+  section:nth-of-type(2) .skills-wrapper {
+    margin: 50px 0 0 0;
+  }
+  section:nth-of-type(2) .skills-wrapper .me {
+    margin: 0;
+  }
+  section:nth-of-type(2) .bar {
+    max-width: 90%;
+  }
+  section:nth-of-type(2) .bullet-wrap {
+    height: intial;
+    margin: 0;
+    padding: 0 10px;
+  }
+  section:nth-of-type(3) #gallery .mix .card {
+    width: 390px;
+  }
+  section:nth-of-type(3) .filter {
+    font-size: 13pt;
+    margin: 0 25px;
+    padding: 0 40px;
+  }
+  section:nth-of-type(4) .blog-wrap {
+    margin: 0 0 50px 20px;
+    opacity: 0;
+    width: 400px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  section:nth-of-type(4) .blog-wrap {
+    margin: 0 0 50px 20px;
+    width: 270px;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
+	
+	</style>
+	
+	
+	<script>
+	$(function() {
+  var isMobile;
+  if (
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    )
+  ) {
+    isMobile = true;
+
+    // Mobile height fix
+    $('.height-fix').each(function() {
+      var h = $(this).height();
+      $(this).height(h);
+    });
+  }
+
+  // RESIZE RESETS
+  $(window).resize(function() {
+    posFilterBar($('.filter').first());
+  });
+
+  // Sticky Nav on Mobile
+  if (isMobile) {
+    $('nav').addClass('fixed');
+  } else {
+    $('nav').addClass('desk');
+  }
+
+  // NAV POSITION
+  var navPos = $('nav').position().top;
+  var lastPos = 0;
+  var lockTimer;
+
+  $(window).on('scroll', function() {
+    var pos = $(window).scrollTop();
+    var pos2 = pos + 50;
+    var scrollBottom = pos + $(window).height();
+
+    if (!isMobile) {
+      if (pos >= navPos + $('nav').height() && lastPos < pos) {
+        $('nav').addClass('fixed');
+      }
+      if (pos < navPos && lastPos > pos) {
+        $('nav').removeClass('fixed');
+      }
+      lastPos = pos;
+    }
+
+    // Link Highlighting
+    if (pos2 > $('#home').offset().top) {
+      highlightLink('home');
+    }
+    if (pos2 > $('#about').offset().top) {
+      highlightLink('about');
+    }
+    if (pos2 > $('#portfolio').offset().top) {
+      highlightLink('portfolio');
+    }
+    if (pos2 > $('#blog').offset().top) {
+      highlightLink('blog');
+    }
+    if (
+      pos2 > $('#contact').offset().top ||
+      pos + $(window).height() === $(document).height()
+    ) {
+      highlightLink('contact');
+    }
+
+    // Prevent Hover on Scroll
+    clearTimeout(lockTimer);
+    if (!$('body').hasClass('disable-hover')) {
+      $('body').addClass('disable-hover');
+    }
+
+    lockTimer = setTimeout(function() {
+      $('body').removeClass('disable-hover');
+    }, 500);
+  });
+
+  function highlightLink(anchor) {
+    $('nav .active').removeClass('active');
+    $('nav')
+      .find('[dest="' + anchor + '"]')
+      .addClass('active');
+  }
+
+  // EVENT HANDLERS
+  $('.page-link').click(function() {
+    var anchor = $(this).attr('dest');
+    $('.link-wrap').removeClass('visible');
+
+    $('nav span').removeClass('active');
+    $('nav')
+      .find('[dest="' + anchor + '"]')
+      .addClass('active');
+
+    $('html, body').animate(
+      {
+        scrollTop: $('#' + anchor).offset().top
+      },
+      400
+    );
+  });
+
+  $('.mdi-menu').click(function() {
+    $('.link-wrap').toggleClass('visible');
+  });
+
+  $('.blog-wrap').hover(
+    function() {
+      $('.blog-wrap')
+        .not(this)
+        .addClass('fade');
+      $(this).addClass('hover');
+    },
+    function() {
+      $(this).removeClass('hover');
+      $('.blog-wrap').removeClass('fade');
+    }
+  );
+
+  posFilterBar($('.filter').first());
+
+  $('.filter').click(function() {
+    posFilterBar(this);
+  });
+
+  function posFilterBar(elem) {
+    var origin = $(elem)
+      .parent()
+      .offset().left;
+    var pos = $(elem).offset().left;
+    $('.float-bar').css({
+      left: pos - origin,
+      width: $(elem).innerWidth()
+    });
+    $('.float-bar .row').css('left', (pos - origin) * -1);
+  }
+
+  // GALLERY
+  $('#gallery').mixItUp({});
+
+  function mixClear() {
+    setTimeout(function() {
+      $('#gallery').removeClass('waypoint');
+    }, 2000);
+  }
+
+  // SCROLL ANIMATIONS
+  function onScrollInit(items, elemTrigger) {
+    var offset = $(window).height() / 1.6;
+    items.each(function() {
+      var elem = $(this),
+        animationClass = elem.attr('data-animation'),
+        animationDelay = elem.attr('data-delay');
+
+      elem.css({
+        '-webkit-animation-delay': animationDelay,
+        '-moz-animation-delay': animationDelay,
+        'animation-delay': animationDelay
+      });
+
+      var trigger = elemTrigger ? trigger : elem;
+
+      trigger.waypoint(
+        function() {
+          elem.addClass('animated').addClass(animationClass);
+          if (elem.get(0).id === 'gallery') mixClear(); //OPTIONAL
+        },
+        {
+          triggerOnce: true,
+          offset: offset
+        }
+      );
+    });
+  }
+
+  setTimeout(function() {
+    onScrollInit($('.waypoint'));
+  }, 10);
+
+  // // CONTACT FORM
+  // $('#contact-form').submit(function(e) {
+  //   e.preventDefault();
+  //   $.ajax({
+  //     url: 'https://api.web3forms.com/submit',
+  //     method: 'POST',
+  //     data: { message: $('form').serialize(), access_key: 'cdde2ef6-ca0e-437a-8dc6-17434a99a38f' },
+  //     dataType: 'json'
+  //   }).done(function(response) {
+  //     $('#success').addClass('expand');
+  //     $('#contact-form')
+  //       .find('input[type=text], input[type=email], textarea')
+  //       .val('');
+  //   });
+  // });
+
+  // $('#close').click(function() {
+  //   $('#success').removeClass('expand');
+  // });
+  const form = document.getElementById("contact-form");
+
+  form.addEventListener("submit", function (e) {
+    const formData = new FormData(form);
+    e.preventDefault();
+    var object = {};
+    formData.forEach((value, key) => {
+      object[key] = value;
+    });
+    var json = JSON.stringify(object);
+    result.innerHTML = "Please wait...";
+  
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: json
+    })
+      .then(async (response) => {
+        let json = await response.json();
+        if (response.status == 200) {
+          result.innerHTML = json.message;
+          result.classList.remove("text-gray-500");
+          result.classList.add("text-green-500");
+        } else {
+          console.log(response);
+          result.innerHTML = json.message;
+          result.classList.remove("text-gray-500");
+          result.classList.add("text-red-500");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        result.innerHTML = "Something went wrong!";
+      })
+      .then(function () {
+        form.reset();
+        setTimeout(() => {
+          result.style.display = "none";
+        }, 5000);
+      });
+  });
+});
+$(document).ready(function() {
+  // MODAL
+  var modalText = {
+    discover: {
+      title: 'ChowNow Discover',
+      tag: 'FOOD ORDERING PLATFORM.',
+      detail:
+        'ChowNow Discover is a platform that lets customers discover new local restaurants and provides business owners with tools to convert first time orders into lifelong diners.',
+      link: 'https://eat.chownow.com/'
+    },
+    ordering: {
+      title: 'ChowNow Ordering Web',
+      tag: 'WHITE-LABEL ONLINE ORDERING SOLUTION.',
+      detail:
+        'ChowNow is a commission-free online ordering system and food ordering app helping restaurants feed their hungry customers.',
+      link: 'https://direct.chownow.com/direct/195/locations/260'
+    },
+    newrelic: {
+      title: 'NewRelic.com',
+      tag: 'APPLICATION PERFORMANCE MONITORING.',
+      detail:
+        'New Relic allows companys to monitor and analyze their application data efficiently and respond to incidents before they become a problem.',
+      link: 'http://www.newrelic.com'
+    },
+    brave: {
+      title: 'Brave Creators',
+      tag: 'CRYPTO CONTRIBUTIONS.',
+      detail:
+        'A platform for content creators to monetize their work and collect contributions through secure and reliable crypto currency',
+      link: 'https://creators.brave.com/'
+    },
+    walker: {
+      title: 'WalkerTracker',
+      tag: 'PERFORMANCE METRICS.',
+      detail:
+        'Walker Tracker offers goal management, fitness tracking, and team competitions to companies for internal use. A Ruby on Rails and Javascript companion site for the Walker Tracker App. Features visual metrics and gamified progression system.'
+    },
+    powur: {
+      title: 'Powur.com',
+      tag: 'CONSUMER POWERED MARKETING.',
+      detail:
+        'Powur is a marketing platform for lead generation, recruitment, and team building. Built with Ruby on Rails and Angular-UI. Makes use of Angular-material for front-end visuals. Features complex user tree heiarchy and commission system.',
+      link: 'http://www.powur.com/with/42'
+    },
+    mystand: {
+      title: 'MyStand',
+      tag: 'CROWD-FUNDED CHARITY.',
+      detail:
+        'MyStand is a crowd-funding, media sharing website, that has you donating actions instead of money out of your pocket. Single page App built with Node.js on Sails and Angular 2.0. Features social media sharing and large scale crowd-funding.'
+    },
+    never: {
+      title: 'NeverSurrender',
+      tag: 'ALS AWARENESS.',
+      detail:
+        'NeverSurrender is a platform for the new ALS foundation mobile app in hopes to raise awareness and research funding to fight ALS. Pure JavaScript marketing site to promote the new ALS NeverSurrender app.'
+    },
+    themall: {
+      title: 'The Mall',
+      tag: 'PEER GUIDED SHOPPING.',
+      detail:
+        'The Mall is a place to follow the latest fashion purchases of your friends and favorite celebrities. Built with Node.js and Handlebars. Features the ability to import thousands of top brands products into one shopping site.'
+    }
+  };
+
+  $('#gallery .button').on('click', function() {
+    fillModal(this.id);
+    $('.modal-wrap').addClass('visible');
+  });
+
+  $('.close').on('click', function() {
+    $('.modal-wrap, #modal .button').removeClass('visible');
+  });
+
+  $('.mask').on('click', function() {
+    $('.modal-wrap, #modal .button').removeClass('visible');
+  });
+
+  var carousel = $('#carousel'),
+    slideWidth = 700,
+    threshold = slideWidth / 3,
+    dragStart,
+    dragEnd;
+
+  setDimensions();
+
+  $('#next').click(function() {
+    shiftSlide(-1);
+  });
+  $('#prev').click(function() {
+    shiftSlide(1);
+  });
+
+  carousel.on('mousedown', function() {
+    if (carousel.hasClass('transition')) return;
+    dragStart = event.pageX;
+    $(this).on('mousemove', function() {
+      dragEnd = event.pageX;
+      $(this).css('transform', 'translateX(' + dragPos() + 'px)');
+    });
+    $(document).on('mouseup', function() {
+      if (dragPos() > threshold) {
+        return shiftSlide(1);
+      }
+      if (dragPos() < -threshold) {
+        return shiftSlide(-1);
+      }
+      shiftSlide(0);
+    });
+  });
+
+  function setDimensions() {
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      slideWidth = $(window).innerWidth();
+    }
+    $('.carousel-wrap, .slide').css('width', slideWidth);
+    $('.modal').css('max-width', slideWidth);
+    $('#carousel').css('left', slideWidth * -1);
+  }
+
+  function dragPos() {
+    return dragEnd - dragStart;
+  }
+
+  function shiftSlide(direction) {
+    if (carousel.hasClass('transition')) return;
+    dragEnd = dragStart;
+    $(document).off('mouseup');
+    carousel
+      .off('mousemove')
+      .addClass('transition')
+      .css('transform', 'translateX(' + direction * slideWidth + 'px)');
+    setTimeout(function() {
+      if (direction === 1) {
+        $('.slide:first').before($('.slide:last'));
+      } else if (direction === -1) {
+        $('.slide:last').after($('.slide:first'));
+      }
+      carousel.removeClass('transition');
+      carousel.css('transform', 'translateX(0px)');
+    }, 700);
+  }
+
+  function fillModal(id) {
+    $('#modal .title').text(modalText[id].title);
+    $('#modal .detail').text(modalText[id].detail);
+    $('#modal .tag').text(modalText[id].tag);
+    if (modalText[id].link)
+      $('#modal .button')
+        .addClass('visible')
+        .parent()
+        .attr('href', modalText[id].link);
+
+    $.each($('#modal li'), function(index, value) {
+      $(this).text(modalText[id].bullets[index]);
+    });
+    $.each($('#modal .slide'), function(index, value) {
+      $(this).css({
+        background:
+          "url('https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630') center center/cover",
+        backgroundSize: 'cover'
+      });
+    });
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	</script>
+	
+	
+	
+  </head>
+  <body>
+    <div class="overflow-wrap">
+      <!-- HOME -->
+      <div class="modal-wrap flex">
+        <div class="mask"></div>
+        <div class="modal" id="modal">
+          <div class="carousel-wrap">
+            <div class="window">
+              <div id="carousel">
+                <div class="slide"></div>
+                <div class="slide"></div>
+                <div class="slide"></div>
+              </div>
+              <i class="mdi mdi-chevron-left" id="prev"></i>
+              <i class="mdi mdi-chevron-right" id="next"></i>
+            </div>
+          </div>
+          <div class="info-box">
+            <div class="title"></div>
+            <div class="tag"></div>
+            <div class="detail"></div>
+            <a href="#" target="_blank"
+              ><div class="button">
+                <i class="mdi fa-solid fa-arrow-up "></i>VIEW SITE
+              </div></a
+            >
+          </div>
+          <i class="close mdi mdi-close"></i>
+        </div>
+      </div>
+
+      <section id="home" class="flex height-fix">
+        <div id="pt" class="canvas"></div>
+        <div class="flex">
+          <div class="text">
+            Hello, I'm <span class="highlight">T Chaithanya Sri BalaSai</span>.
+            <br />
+            I'm a full-stack web developer.
+          </div>
+
+          <div class="button page-link" dest="about">
+            View my work <i class="mdi mdi-arrow-right"></i>
+          </div>
+
+          <nav class="flex">
+            <div class="link-wrap">
+              <div class="active page-link" dest="home">home</div>
+              <div class="page-link" dest="about">about</div>
+              <div class="page-link" dest="portfolio">portfolio</div>
+              <div class="page-link" dest="blog">blog</div>
+              <div class="page-link" dest="contact">contact</div>
+            </div>
+            <i class="mdi mdi-menu"></i>
+          </nav>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about">
+        <div class="container flex">
+          <div class="header waypoint" data-animation="slide-in-left">
+            ABOUT
+          </div>
+          <div
+            class="header-bar waypoint"
+            data-animation="slide-in-left"
+            data-delay=".5s"
+          ></div>
+
+          <div class="flex row label-wrap">
+            <div class="flex row-gt-sm">
+              <div class="flex bullet-wrap ">
+                <div class="hex-wrap waypoint" data-animation="flip-in-x">
+                  <div class="hexagon">
+                    <i class="mdi mdi-speedometer"></i>
+                  </div>
+                </div>
+                <div class="waypoint" data-animation="fade-in">
+                  <div class="label bold">Fast</div>
+                  <div>
+                    Fast load times and lag free interaction, my highest
+                    priority.
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex bullet-wrap ">
+                <div
+                  class="hex-wrap waypoint"
+                  data-animation="flip-in-x"
+                  data-delay=".2s"
+                >
+                  <div class="hexagon">
+                    <i class="mdi mdi-cellphone-link"></i>
+                  </div>
+                </div>
+                <div class="waypoint" data-animation="fade-in" data-delay=".2s">
+                  <div class="label bold">Responsive</div>
+                  <div>My layouts will work on any device, big or small.</div>
+                </div>
+              </div>
+            </div>
+            <div class="flex row-gt-sm">
+              <div class="flex bullet-wrap ">
+                <div
+                  class="hex-wrap waypoint"
+                  data-animation="flip-in-x"
+                  data-delay=".4s"
+                >
+                  <div class="hexagon">
+                    <i class="mdi mdi-lightbulb-outline"></i>
+                  </div>
+                </div>
+                <div class="waypoint" data-animation="fade-in" data-delay=".4s">
+                  <div class="label bold">Intuitive</div>
+                  <div>Strong preference for easy to use, intuitive UX/UI.</div>
+                </div>
+              </div>
+
+              <div class="flex bullet-wrap ">
+                <div
+                  class="hex-wrap waypoint"
+                  data-animation="flip-in-x"
+                  data-delay=".6s"
+                >
+                  <div class="hexagon">
+                    <i class="mdi mdi-rocket"></i>
+                  </div>
+                </div>
+                <div class="waypoint" data-animation="fade-in" data-delay=".6s">
+                  <div class="label bold">Dynamic</div>
+                  <div>
+                    Websites don't have to be static, I love making pages come
+                    to life.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills-wrapper flex row-gt-sm">
+            <div
+              class="flex flex-50-gt-sm waypoint"
+              data-animation="slide-in-left"
+            >
+              <img src="C:\Users\DELL\Downloads\chaithanya.jpg" class="me" />
+              <!-- <div><img class="up-arrow" src="img/up-arrow.png"></div> -->
+              <div class="label bold">T Chaithanya</div>
+              <div>
+                I'm a Front-End Developer for
+                <a
+                  class="highlight"
+                  href="http://www.nwsd.co.in"
+                  target="_blank"
+                  >NWSD.CO.IN</a
+                >
+               Mr. T. Chaithanya Bala Sai is the founder of our company, from Satyanarayanapuram, Bhadradri Kothagudam district, Telangana. Graduated in 2022 from Sri Sai Degree College Bhadrachalam.Telangana state innovator, motivational speaker. He is not only a founder of NWSD he innovated 20+ innovations like Drip irrigation system, LPG gas leakage alarm, Road accident alarm, Safety home, Road safety spects, self jockey system in vehicles etc., He has done around 235 innovation projects for school students. He encourages new innovators to start their career into innovations. He is doing many programs to spread awareness about innovations and startups. Extending Zeel towards software industry, and to full fill it he joined V CUBE SOFTWARE SOLUTIONS at Hyderabad for JAVA FULLSTACK Course, Turned as a Fullstack developer in Java.
+                <br />
+                I have serious passion for UI effects, animations and creating
+                intuitive, dynamic user experiences.
+                <br />
+                <span class="page-link highlight" dest="contact"
+                  >Let's make something special.</span
+                >
+              </div>
+            </div>
+
+            <div
+              class="flex flex-50-gt-sm waypoint bars-wrap"
+              data-animation="slide-in-right"
+            >
+			
+              <div class="bar flex">
+                <div class="bar fill" style="width:90%">
+                  <div class="tag bold flex">CSS</div>
+                </div>
+              </div>
+
+              <div class="bar flex">
+                <div class="bar fill" style="width:90%">
+                  <div class="tag bold flex">HTML</div>
+                </div>
+              </div>
+
+              <div class="bar flex">
+                <div class="bar fill" style="width:50%">
+                  <div class="tag bold flex">React</div>
+                </div>
+              </div>
+
+              <div class="bar flex">
+                <div class="bar fill" style="width:50%">
+                  <div class="tag bold flex">JavaScript</div>
+                </div>
+              </div>
+
+              <div class="bar flex">
+                <div class="bar fill" style="width:70%">
+                  <div class="tag bold flex">CoreJava</div>
+                </div>
+              </div>
+
+              <div class="bar flex">
+                <div class="bar fill" style="width:70%">
+                  <div class="tag bold flex">JDBC MVC</div>
+                </div>
+              </div>
+
+              <div class="bar flex">
+                <div class="bar fill" style="width:75%">
+                  <div class="tag bold flex">SpringBoot</div>
+                </div>
+              </div>
+
+           
+
+              
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PORTFOLIO -->
+      <section class="flex" id="portfolio">
+        <div class="header waypoint" data-animation="slide-in-right">
+          PROJECTS
+        </div>
+        <div
+          class="header-bar waypoint"
+          data-animation="slide-in-right"
+          data-delay=".3s"
+        ></div>
+
+        <div class="filter-wrap waypoint" data-animation="fade-in">
+          <div class="flex row">
+            <div class="filter" data-filter="all">ALL</div>
+            <div class="filter" data-filter=".rails">SpringBoot</div>
+            <div class="filter" data-filter=".react">JDBC MVC</div>
+            <div class="filter" data-filter=".js">JAVASCRIPT</div>
+          </div>
+          <div class="float-bar">
+            <div class="flex row">
+            <div class="filter" data-filter="all">ALL</div>
+            <div class="filter" data-filter=".rails">SpringBoot</div>
+            <div class="filter" data-filter=".react">JDBC MVC</div>
+            <div class="filter" data-filter=".js">JAVASCRIPT</div>
+          </div>
+          </div>
+        </div>
+
+        <div id="gallery" class="container flex row wrap waypoint">
+          <div class="mix react" data-my-order="1">
+            <div>
+              <div class="card"></div>
+              <div class="text">
+                <div class="bold">Project Name</div>
+                <span class="highlight">JDBC MVC</span>
+              </div>
+              <div class="button" id="ordering">LEARN MORE</div>
+            </div>
+          </div>
+
+          <div class="mix react" data-my-order="1">
+            <div>
+              <div class="card"></div>
+              <div class="text">
+                <div class="bold">Project Name</div>
+                <span class="highlight">JDBC MVC</span>
+              </div>
+              <div class="button" id="discover">LEARN MORE</div>
+            </div>
+          </div>
+
+          <div class="mix react" data-my-order="1">
+            <div>
+              <div class="card"></div>
+              <div class="text">
+                <div class="bold">New Relic</div>
+                <span class="highlight">JDBC MVC</span>
+              </div>
+              <div class="button" id="newrelic">LEARN MORE</div>
+            </div>
+          </div>
+
+          <div class="mix react" data-my-order="1">
+            <div>
+              <div class="card"></div>
+              <div class="text">
+                <div class="bold">Brave Creators</div>
+                <span class="highlight">JDBC MVC</span>
+              </div>
+              <div class="button" id="brave">LEARN MORE</div>
+            </div>
+          </div>
+
+          <div class="mix rails" data-my-order="1">
+            <div>
+              <div class="card"></div>
+              <div class="text">
+                <div class="bold">Project Name </div>
+                <span class="highlight">SpringBoot</span>
+              </div>
+              <div class="button" id="walker">LEARN MORE</div>
+            </div>
+          </div>
+
+          <div class="mix js" data-my-order="1">
+            <div>
+              <div class="card"></div>
+              <div class="text">
+                <div class="bold">Project Name</div>
+                <span class="highlight">JavaScript</span>
+              </div>
+              <div class="button" id="mystand">LEARN MORE</div>
+            </div>
+          </div>
+
+          <div class="mix js" data-my-order="1">
+            <div>
+              <div class="card"></div>
+              <div class="text">
+                <div class="bold">Project Name</div>
+                <span class="highlight">JavaScript</span>
+              </div>
+              <div class="button" id="never">LEARN MORE</div>
+            </div>
+          </div>
+
+          <div class="mix rails" data-my-order="1">
+            <div>
+              <div class="card"></div>
+              <div class="text">
+                <div class="bold">Project Name</div>
+                <span class="highlight">SpringBoot</span>
+              </div>
+              <div class="button" id="powur">LEARN MORE</div>
+            </div>
+          </div>
+
+          <div class="mix js" data-my-order="1">
+            <div>
+              <div class="card"></div>
+              <div class="text">
+                <div class="bold">Project Name</div>
+                <span class="highlight">JavaScript</span>
+              </div>
+              <div class="button" id="themall">LEARN MORE</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BLOG -->
+      <section id="blog">
+        <div class="container flex">
+          <div class="header waypoint" data-animation="slide-in-left">BLOG</div>
+          <div
+            class="header-bar waypoint"
+            data-animation="slide-in-left"
+            data-delay=".5s"
+          ></div>
+
+          <div class="flex row wrap">
+            <div class="flex row-gt-sm">
+              <a
+                href="https://medium.com/@codermatthew/breaking-your-coders-block-786cac82be3f"
+                target="_blank"
+              >
+                <div class="blog-wrap waypoint" data-animation="fade-in">
+                  <div class="fade-wrap">
+                    <div class="thumb" id="thumb-1"></div>
+                    <div class="label bold">Breaking Your Coder's Block</div>
+                    <div class="date">APRIL 29, 2016</div>
+                    <div class="bar"></div>
+                    <div class="text">
+                      At one time or another, as a developer, we've all found
+                      ourselves hopelessly stuck on a coding issue...
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a
+                href="https://medium.com/@codermatthew/awake-this-is-your-brain-on-caffeine-9b1f8f2f3f1e"
+                target="_blank"
+              >
+                <div
+                  class="blog-wrap waypoint"
+                  data-animation="fade-in"
+                  data-delay=".2s"
+                >
+                  <div class="fade-wrap">
+                    <div class="thumb" id="thumb-2"></div>
+                    <div class="label bold">
+                      !Awake: This is Your Brain on Caffeine
+                    </div>
+                    <div class="date">MARCH 19, 2015</div>
+                    <div class="bar"></div>
+                    <div class="text">
+                      If there's one thing I can truly claim to be an expert on,
+                      it's staying awake.
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="flex row-gt-sm">
+              <a
+                href="https://medium.com/@codermatthew/getting-a-handle-on-handlebars-mastering-html-templates-96b3a1e630d2"
+                target="_blank"
+              >
+                <div
+                  class="blog-wrap waypoint"
+                  data-animation="fade-in"
+                  data-delay=".4s"
+                >
+                  <div class="fade-wrap">
+                    <div class="thumb" id="thumb-3"></div>
+                    <div class="label bold">Getting a Handle on Handlebars</div>
+                    <div class="date">MARCH 04, 2015</div>
+                    <div class="bar"></div>
+                    <div class="text">
+                      Handlebars.js, a compelling extension of Mustache template 
+                      language, allows developers...
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a
+                href="https://medium.com/@codermatthew/5-extensions-for-your-chrome-toolbelt-828871ce1ceb"
+                target="_blank"
+              >
+                <div
+                  class="blog-wrap waypoint"
+                  data-animation="fade-in"
+                  data-delay=".6s"
+                >
+                  <div class="fade-wrap">
+                    <div class="thumb" id="thumb-4"></div>
+                    <div class="label bold">
+                      5 Extensions for Your Chrome Toolbelt
+                    </div>
+                    <div class="date">FEBRUARY 23, 2015</div>
+                    <div class="bar"></div>
+                    <div class="text">
+                      If you're not using Google Chrome as a front-end web
+                      developer, you're missing out. Not only is Chrome the...
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <svg
+          preserveAspectRatio="none"
+          viewBox="0 0 100 102"
+          height="75"
+          width="100%"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          class="svgcolor-light"
+        >
+          <path d="M0 0 L50 100 L100 0 Z" fill="white" stroke="white"></path>
+        </svg>
+    
+      </section>
+
+      <footer>
+	  
+        <i class="fa-solid fa-arrow-up mdi-chevron-double-up page-link" dest="home"></i>
+
+        <div class="icon-wrap flex row">
+          <a href="https://www.linkedin.com/in/chaithanya-sri-balasai-tatholu-a59390225?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ">
+            <div class="flex icon" id="icon-2">
+			
+             <i class="fa-brands fa-linkedin"></i>
+            </div>
+          </a>
+          <a href="mailto:tatholubalasai@gmail.com">
+            <div class="flex icon" id="icon-3">
+             <i class="fa-solid fa-envelope"></i>
+            </div>
+          </a>
+          <a href="https://www.instagram.com/1innovatorsai/">
+            <div class="flex icon" id="icon-4">
+             <i class="fab fa-instagram"></i>
+            </div>
+          </a>
+          <a href="https://x.com/InnovatorSai?t=Tr-I0voTLstlIczvTsdh4w&s=09"">
+            <div class="flex icon" id="icon-5">
+             <i class="fab fa-twitter"></i>
+            </div>
+          </a>
+        </div>
+        <div class="info-box">
+          <div class="footnote">
+           <h3> T Chaithanya <span class="highlight">&copy;2024</span></h3> 
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <div id="preload">
+      <img src="https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630" />
+      <img src="https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630" />
+      <img src="https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630" />
+      <img src="https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630.jpg" />
+      <img src="https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630" />
+      <img src="https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630" />
+      <img src="https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630" />
+      <img src="https://images.ctfassets.net/hrltx12pl8hq/28ECAQiPJZ78hxatLTa7Ts/2f695d869736ae3b0de3e56ceaca3958/free-nature-images.jpg?fit=fill&w=1200&h=630" />
+      <img src="img/blog-1.jpg" />
+      <img src="img/blog-2.jpg" />
+      <img src="img/blog-3.jpg" />
+      <img src="img/blog-4.jpg" />
+      <img src="img/slides/discover-0.jpg" />
+      <img src="img/slides/discover-1.jpg" />
+      <img src="img/slides/discover-2.jpg" />
+      <img src="img/slides/ordering-0.jpg" />
+      <img src="img/slides/ordering-1.jpg" />
+      <img src="img/slides/ordering-2.jpg" />
+      <img src="img/slides/newrelic-0.jpg" />
+      <img src="img/slides/newrelic-1.jpg" />
+      <img src="img/slides/newrelic-2.jpg" />
+      <img src="img/slides/mystand-0.jpg" />
+      <img src="img/slides/mystand-1.jpg" />
+      <img src="img/slides/mystand-2.jpg" />
+      <img src="img/slides/never-0.jpg" />
+      <img src="img/slides/never-1.jpg" />
+      <img src="img/slides/never-2.jpg" />
+      <img src="img/slides/powur-0.jpg" />
+      <img src="img/slides/powur-1.jpg" />
+      <img src="img/slides/powur-2.jpg" />
+      <img src="img/slides/brave-0.jpg" />
+      <img src="img/slides/brave-1.jpg" />
+      <img src="img/slides/brave-2.jpg" />
+      <img src="img/slides/themall-0.jpg" />
+      <img src="img/slides/themall-1.jpg" />
+      <img src="img/slides/themall-2.jpg" />
+      <img src="img/slides/walker-0.jpg" />
+      <img src="img/slides/walker-1.jpg" />
+      <img src="img/slides/walker-2.jpg" />
+    </div>
+  </body>
+</html>
+
+<script src="scripts/canvas.js"></script>
